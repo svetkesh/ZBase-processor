@@ -74,7 +74,7 @@ try to create db connection base_db = zab_base_dat(zab_base_dat)
 ZAB database connected OK to file  base.dat
 try to perform sql_querry SELECT value FROM settings WHERE id = 1
 try to perform sql_querry SELECT value FROM settings WHERE id = 1
-[('5476721531208861254',)]
+[('4475721531217861254',)]
 
 
 ------------------
