@@ -1,0 +1,116 @@
+====
+
+
+stats in "sqlite_sequence" :
+
+"main_stat"	"4" : 4 - is last row in "main_stat"
+"settings"	"15" : 15 - is last row in table "settings"
+"computer"	"11" : 11 - is last row it table "computer"
+"history"	"255" : 255 - is last row in table "history" <- this should be checked
+
+
+10.5.104.23 - problemmatic ip computer, id = 2
+
+--
+
+data in "settings" :
+
+"1"	"5476721531208861254"
+"2"	"NULL"
+"3"	"NULL"
+"4"	"25d55ad283aa400af464c76d713c07ad"
+"5"	"NULL"
+"6"	"NULL"
+"7"	"NULL"
+"8"	"10000"
+"9"	"NULL"
+"10"	"NULL"
+"11"	"NULL"
+"12"	"NULL"
+"13"	"NULL"
+"14"	"NULL"
+"15"	"http://updateserver.zillya.com"
+
+--
+
+
+where comp with id = 2 exists ?
+"computer"            : Y <- this table SHOULD be changed            -> then change "main_stat" "computer" to -=1
+"computerToGroupLink" : Y <- this table SHOULD be changed            -> no futher links
+"computer_license"    : Y <- this table SHOULD be changed            -> no futher links
+"computer_settings"   : N <- (right now not but could be elsewhere)  -> no futher links
+"group_t"             : N <- (right now not but could be elsewhere)  -> no futher links
+"history"             : Y <- this table SHOULD be changed            -> then change "main_stat" "history" to count (*) history
+"main_stat"           : N <- (no chages needed at all)               -> no futher links
+"settings"            : N <- (don't know)                            -> no futher links
+"sqlite_sequence"     : N <- this table SHOULD be changed            -> no futher links
+"threat_log_new"      : N <- (right now not but could be)            -> no futher links
+
+
+ACTIONS
+
+count before
+select count (*) from computer
+>>
+11
+
+check (really unnessesary):
+select * from computer where ip = "10.5.104.23"
+>>
+"2"	"W-PV-IOC-23"	"10.5.104.23"	"NULL"	"1"	"1.1.4682.0"	"2.0.0.2766"	"0"	"0"	"0"	"0"	"0"	"1459858132"	"1"	"1459858141"
+
+count bad rows while looking bad ids
+select count (*) from computer where ip = "10.5.104.23"
+>>
+1
+
+look up for ids
+select id from computer where ip = "10.5.104.23"
+>>
+2
+
+check actions effect and get data for modified "main_stat"
+select count (*) from computer
+>>
+10
+
+---- all queries ----
+--select count (*) from computer
+--select * from computer where ip = "10.5.104.23" -- waste
+--select id from computer where ip = "10.5.104.23"
+--select count (*) from computer where ip = "10.5.104.23"
+--select id from computer where ip = "10.5.104.23"
+--delete from computer where ip = "10.5.104.23"
+--select count (*) from computer
+----
+
+
+
+----
+problems examples
+
+select computer_license.id, computer.deleted, computer.id from computer_license, computer where computer.id = computer_license.id and computer.deleted = 1
+>>
+"2"	"1"	"2"
+
+
+select count (*) from computer_license, computer where computer.id = computer_license.id and computer.deleted = 1
+>>
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

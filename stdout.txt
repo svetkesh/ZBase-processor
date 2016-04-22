@@ -1,0 +1,86 @@
+running  ['test_db_object_01.py']
+hello I'm zab_base_dat object
+--------
+check file file_name  ....
+good file file_name  ....
+check could be opened file_name  ....
+could not open file_name  ....
+test_this.is_zab_db -> False
+--------
+checking given command  
+command empty>  <
+function_multi_param()= False
+checking given command  
+command empty>  <
+function_multi_param('')= False
+checking given command  other command
+--
+got this command_keys ()
+--
+got this command_pairs {}
+
+accepted command > other command < lenght 13
+function_multi_param('other command')= False
+--------
+checking *command_keys and **command_pairs
+checking given command  other command
+--
+got this command_keys (0, 'a', 1, 2.3)
+0
+a
+1
+2.3
+--
+got this command_pairs {'c': 5, 'd': 7}
+c 5
+d 7
+
+accepted command > other command < lenght 13
+function_multi_param()= False
+--------
+checking function_in_list_tester
+
+function_in_list_tester got this data to check:
+command= other command parameter= (0, 'a', 1, 2.3)
+function_in_list_tester()= False
+
+function_in_list_tester got this data to check:
+command= good command parameter= (0, 'a', 1, 2.3)
+command present in dict_of_commands and value is  False
+function_in_list_tester()= False
+
+function_in_list_tester got this data to check:
+command= change_ServerID parameter= (0, 'a', 1, 2.3)
+command present in dict_of_commands and value is  True
+function_in_list_tester()= True
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+
+--------
+stdout for stage 021
+
+
+--
+running  ['test_ext_procedure_fake_main02.py']
+running  ['test_ext_procedure_fake_main02.py']
+running  ['test_ext_procedure_fake_main02.py']
+running  ['test_ext_procedure_fake_main02.py']
+get_license_ID_from_db_021 runing with arg= base.dat
+try to create db connection base_db = zab_base_dat(zab_base_dat)
+ZAB database connected OK to file  base.dat
+try to perform sql_querry SELECT value FROM settings WHERE id = 1
+try to perform sql_querry SELECT value FROM settings WHERE id = 1
+[('5476721531208861254',)]
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+--------
+
+
