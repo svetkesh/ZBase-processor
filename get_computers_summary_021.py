@@ -24,7 +24,9 @@ then perform sql querry analisys and may be parse
 then returns result # and success code <-- later
                     # next step
                     # and error code
-or False if error raised.'''
+or False if error raised.
+This is example of output for 1 licenced computer
+ [(1, u'KESHA-C2037', u'192.168.0.188')]'''
 
 import sys
 #import time
@@ -33,8 +35,8 @@ print ('running ',sys.argv)
 
 from test_db_object_021 import *
 
-def get_license_ID_from_db_021(base_db_name):
-	print ('get_license_ID_from_db_021 runing with arg=',base_db_name)
+def get_computers_summary(base_db_name):
+	print ('get_computers_summary_021 runing with arg=',base_db_name)
 	
 	# try to create db connection
 	try:
@@ -46,10 +48,10 @@ def get_license_ID_from_db_021(base_db_name):
 		#print ('----')
 		
 		#print (base_db.print()) this is bad cause yet not implemented print()
-		base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1')
-		print(base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1'))
-		#print (base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1'))
-		return base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1')
+		base_db.do_external_sql_querry('SELECT id, name, ip FROM computer WHERE deleted = 0')
+		print(base_db.do_external_sql_querry('SELECT id, name, ip FROM computer WHERE deleted = 0'))
+		#print (base_db.do_external_sql_querry('SELECT id, name, ip FROM computer WHERE deleted = 0'))
+		return base_db.do_external_sql_querry('SELECT id, name, ip FROM computer WHERE deleted = 0')
 		# return 'Some data and Some success code' # Next round for
 	except:
 		print ('connection to db was not successfull')

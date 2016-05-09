@@ -47,6 +47,9 @@ print ('running ',sys.argv)
 
 #sample_proc('it is string arg for sample_proc')
 
+# before proc called it should be checked against
+# enabled list in coomend_checker
+#
 #if multi_reply_module_checker('sample_proc')[0] :
 	#print ('ENABBLED')
 
@@ -63,11 +66,27 @@ print ('running ',sys.argv)
 
 from test_command_checker02 import *
 
+
 from test_ext_procedure_for_db_021 import *
+
 #print (multi_reply_module_checker('get_license_ID_from_db_021')) # good
+
+# get_qty_licenced_computers #good
 get_license_ID_from_db_021('base.dat')
+print ("from get_qty_licenced_computers021 import *")
+
+from get_qty_licenced_computers021 import *
+main_out_get_qty_licenced_computers = get_qty_licenced_computers('base.dat')
+print ('main_out_p',main_out_get_qty_licenced_computers)
+
+# get_computers_summary_021
+from get_computers_summary_021 import *
+#main_out_computers_summary = get_computers_summary_021('base.dat')
+main_out_computers_summary = get_computers_summary('base.dat')
+print ('main_out_p',main_out_computers_summary)
+
 #
-# testing 02-1 end
+# testing 02-2 end
 #
 
 
