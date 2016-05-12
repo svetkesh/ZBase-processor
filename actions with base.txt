@@ -98,14 +98,66 @@ select count (*) from computer_license, computer where computer.id = computer_li
 >>
 1
 
+----
+problems matrix
+
+
+ONE problem
+
+infrastructute problems
+
+ ideal :
+computer.id, name, ip (UNIQ and !=NULL ), product_type==1, app_version !=NULL, base_version !=NULL deleted == 0, from computer , id present from computer_license
+
+bad:
+deleted == 0
+SELECT id, name, ip FROM computer
+WHERE deleted = 0
+
+UNIQ
+SELECT (*), id, name, ip FROM computer
+GROUP BY name HAVING COUNT (*) >1
+
+or
+
+SELECT  COUNT (*) AS coun_dupl, id, name, ip FROM computer
+GROUP BY name HAVING COUNT (*) >1
+
+SUM all dupl recrds
+SELECT SUM ( coun_dupl) FROM  (SELECT  COUNT (*) AS coun_dupl, id, name, ip FROM computer
+GROUP BY name HAVING COUNT (*) >1)
 
 
 
+app, base, settings problems...
 
+MORE than ONE problems
 
-
-
-
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+              !                 !                !                 !                 !
+--------------------------------------------------------------------------------------
 
 
 
