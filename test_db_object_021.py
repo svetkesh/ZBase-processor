@@ -167,6 +167,9 @@ class zab_base_dat :
 		db_curs = db_conn.cursor()
 		db_curs.execute(sql_querry) # here sql_querry insert
 		actual_data = db_curs.fetchall()
+		# coomit it need to test previous defs
+		db_conn.commit() # :) thanks to dreamincode.net/forums/topic/210154-sqlite3-in-python/ and google
+		db_curs.close() #
 		db_conn.close()
 		return actual_data
 		
