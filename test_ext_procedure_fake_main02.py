@@ -69,26 +69,34 @@ from test_command_checker02 import *
 
 from test_ext_procedure_for_db_021 import *
 
-#print (multi_reply_module_checker('get_license_ID_from_db_021')) # good
+##print (multi_reply_module_checker('get_license_ID_from_db_021')) # good
 
 ## get_qty_licenced_computers #good
 #get_license_ID_from_db_021('base.dat')
 #print ("from get_qty_licenced_computers021 import *")
 
-#from get_qty_licenced_computers021 import *
+##from get_qty_licenced_computers021 import *
 #main_out_get_qty_licenced_computers = get_qty_licenced_computers('base.dat')
 #print ('main_out_p',main_out_get_qty_licenced_computers)
 
-## get_computers_summary_021
+## get_computers_summary_021 retested  OK
 #from get_computers_summary_021 import *
 ##main_out_computers_summary = get_computers_summary_021('base.dat')
 #main_out_computers_summary = get_computers_summary('base.dat')
 #print ('main_out_p',main_out_computers_summary)
 
-# clear_all_events_021
-from clear_all_events_021 import *
-main_out_clear_all_events_021 = clear_all_events_021('base.dat')
-print ('main_out_p', main_out_clear_all_events_021)
+## clear_all_events_021 retested ok
+#from clear_all_events_021 import *
+#main_out_clear_all_events_021 = clear_all_events_021('base.dat')
+#print ('main_out_p', main_out_clear_all_events_021)
+
+## clear_all_passwords_021_021 - ok
+#from clear_all_passwords_021 import *
+#main_out_clear_all_passwords_021 = clear_all_passwords('base.dat')
+#print ('main_out_p', main_out_clear_all_passwords_021)
+
+
+
 #
 # testing 02-2 end
 #

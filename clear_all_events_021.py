@@ -15,7 +15,7 @@
 # returns somethig expected or error
 #
 
-'''This is proc template.
+'''This is proc clears events.
 
 This proc creates instance of zab_base_dat
 forms some querry 
@@ -24,7 +24,15 @@ then perform sql querry analisys and may be parse
 then returns result # and success code <-- later
                     # next step
                     # and error code
-or False if error raised.'''
+or False if error raised
+
+Actually it performs
+--delete from threat_log_new
+--delete from history
+--update sqlite_sequence set seq=0 where name='history'
+                     # act here implemented
+--select count (*) from threat_log_new (this is optional
+ step may be in future be implemented )'''
 
 import sys
 #import time
@@ -45,18 +53,47 @@ def clear_all_events_021(base_db_name):
 		#print ('base_db', base_db , '\n','type(base_db)' , type(base_db))
 		#print ('----')
 		
+		##print (base_db.print()) this is bad cause yet not implemented print()
+		#base_db.do_external_sql_querry('delete from threat_log_new') # for test select count (*) from threat_log_new
+		#print(base_db.do_external_sql_querry('delete from threat_log_new'))
+		##print (base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1'))
+		#return base_db.do_external_sql_querry('delete from threat_log_new')
+		
+		
+		##base_db.do_external_sql_querry('select count (*) from threat_log_new') # for test select count (*) from threat_log_new
+		##print(base_db.do_external_sql_querry('select count (*) from threat_log_new'))
+		##print (base_db.do_external_sql_querry('select count (*) from threat_log_new'))
+		##return base_db.do_external_sql_querry('select count (*) from threat_log_new')
+		## return 'Some data and Some success code' # Next round for
+		
+		#
+		querry_string = 'delete from threat_log_new'
+		
 		#print (base_db.print()) this is bad cause yet not implemented print()
-		base_db.do_external_sql_querry('delete from threat_log_new') # for test select count (*) from threat_log_new
-		print(base_db.do_external_sql_querry('delete from threat_log_new'))
-		#print (base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1'))
-		return base_db.do_external_sql_querry('delete from threat_log_new')
-		
-		
-		#base_db.do_external_sql_querry('select count (*) from threat_log_new') # for test select count (*) from threat_log_new
-		#print(base_db.do_external_sql_querry('select count (*) from threat_log_new'))
-		#print (base_db.do_external_sql_querry('select count (*) from threat_log_new'))
-		#return base_db.do_external_sql_querry('select count (*) from threat_log_new')
+		base_db.do_external_sql_querry(querry_string)
+		print(base_db.do_external_sql_querry(querry_string))
+		#print (base_db.do_external_sql_querry(querry_string))
+		return base_db.do_external_sql_querry(querry_string)
 		# return 'Some data and Some success code' # Next round for
+		#
+		querry_string = 'delete from history'
+		
+		#print (base_db.print()) this is bad cause yet not implemented print()
+		base_db.do_external_sql_querry(querry_string)
+		print(base_db.do_external_sql_querry(querry_string))
+		#print (base_db.do_external_sql_querry(querry_string))
+		return base_db.do_external_sql_querry(querry_string)
+		# return 'Some data and Some success code' # Next round for
+		#
+		querry_string = 'update sqlite_sequence set seq=0 where name="history"'
+		
+		#print (base_db.print()) this is bad cause yet not implemented print()
+		base_db.do_external_sql_querry(querry_string)
+		print(base_db.do_external_sql_querry(querry_string))
+		#print (base_db.do_external_sql_querry(querry_string))
+		return base_db.do_external_sql_querry(querry_string)
+		# return 'Some data and Some success code' # Next round for			
+		
 	except:
 		print ('connection to db was not successfull')
 		# return 'Some error code' # Next round for

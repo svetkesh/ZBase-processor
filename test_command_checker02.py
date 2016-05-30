@@ -23,6 +23,7 @@ list_of_good_modules = ['test_command_checker02',
 'test_ext_procedure_for_db_021',
 'get_license_ID_from_db_021',
 'clear_all_events_021',
+'clear_all_passwords_021',
 ]
 
 #dict_of_good_modules = {'test_command_checker02':('sample_proc_checker',)}
