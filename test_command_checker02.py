@@ -24,6 +24,9 @@ list_of_good_modules = ['test_command_checker02',
 'get_license_ID_from_db_021',
 'clear_all_events_021',
 'clear_all_passwords_021',
+'set_deleted_021',
+'add_client_021',
+'clear_all_clients_021',
 ]
 
 #dict_of_good_modules = {'test_command_checker02':('sample_proc_checker',)}

@@ -67,7 +67,7 @@ print ('running ',sys.argv)
 from test_command_checker02 import *
 
 
-from test_ext_procedure_for_db_021 import *
+#from test_ext_procedure_for_db_021 import *
 
 ##print (multi_reply_module_checker('get_license_ID_from_db_021')) # good
 
@@ -90,11 +90,24 @@ from test_ext_procedure_for_db_021 import *
 #main_out_clear_all_events_021 = clear_all_events_021('base.dat')
 #print ('main_out_p', main_out_clear_all_events_021)
 
-## clear_all_passwords_021_021 - ok
+## clear_all_passwords_021 - ok
 #from clear_all_passwords_021 import *
 #main_out_clear_all_passwords_021 = clear_all_passwords('base.dat')
 #print ('main_out_p', main_out_clear_all_passwords_021)
 
+## set_deleted_021 - ok
+#from set_deleted_021 import *
+#main_out_set_deleted_021 = set_deleted('base.dat',1)
+#print ('main_out_set_deleted_021 ', main_out_set_deleted_021)
+
+## add_client_021 - ok
+#from add_client_021 import *
+#print( add_client('base.dat' , 'ccaa','10.0.0.5'))
+
+
+## clear_all_clients_021
+#from clear_all_clients_021 import *
+#print( clear_all_clients('base.dat'))
 
 
 #

@@ -30,11 +30,9 @@ This adds client with given name , ip
 and ID is counted as current max(of IDs) +1
 
 sql string looks like
-INSERT INTO computer ('id' , 'name','ip')
- VALUES (
- (SELECT max(id) FROM computer)+1 ,
-  'bbb',
-  '10.10.0.2')'''
+querry_string = 'delete from computer'
+then update sequence
+update sqlite_sequence set seq=0 where name="computer".'''
 
 import sys
 #import time
@@ -43,8 +41,8 @@ print ('running ',sys.argv)
 
 from test_db_object_021 import *
 
-def add_client(base_db_name, client_name,client_ip):
-	print ('add_client_021 runing with arg=',base_db_name, ' client_name' , client_name, 'client_ip', client_ip)
+def clear_all_clients(base_db_name):
+	print ('clear_all_clients_021 runing with arg=',base_db_name)
 	
 	# try to create db connection
 	try:
@@ -56,7 +54,17 @@ def add_client(base_db_name, client_name,client_ip):
 		#print ('----')
 		
 		# no more ugly typing :)
-		querry_string = "INSERT INTO computer ('id' , 'name','ip') VALUES ((SELECT max(id) FROM computer)+1 , '" +client_name+"','"+client_ip+"')"
+		querry_string = 'delete from computer'
+		
+		#print (base_db.print())                                                  # this is bad cause yet not implemented print() 
+		base_db.do_external_sql_querry(querry_string)                            #  each could lead to run query
+		#print(base_db.do_external_sql_querry(querry_string))                     #  so debug it with caution
+		#print (base_db.do_external_sql_querry(querry_string))                    #  if you dont want to get
+		                                                                          #  dublicated or even triple :0
+		#return base_db.do_external_sql_querry(querry_string)                      #  results ... like delete
+		
+		
+		querry_string = 'update sqlite_sequence set seq=0 where name="computer"'
 		
 		#print (base_db.print())                                                  # this is bad cause yet not implemented print() 
 		#base_db.do_external_sql_querry(querry_string)                            #  each could lead to run query
@@ -64,6 +72,7 @@ def add_client(base_db_name, client_name,client_ip):
 		#print (base_db.do_external_sql_querry(querry_string))                    #  if you dont want to get
 		                                                                          #  dublicated or even triple :0
 		return base_db.do_external_sql_querry(querry_string)                      #  results ... like delete
+		
 		# return 'Some data and Some success code' # Next round for
 		
 		##                                                               # here should be placed stat_refresh
@@ -78,4 +87,4 @@ def add_client(base_db_name, client_name,client_ip):
 
 
 # local test run 
-#add_client('base.dat' , 'ccc','10.0.0.3') # good local
+#clear_all_clients('base.dat' , ) # good local

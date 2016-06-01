@@ -71,25 +71,25 @@ def clear_all_events_021(base_db_name):
 		
 		#print (base_db.print()) this is bad cause yet not implemented print()
 		base_db.do_external_sql_querry(querry_string)
-		print(base_db.do_external_sql_querry(querry_string))
+		#print(base_db.do_external_sql_querry(querry_string))
 		#print (base_db.do_external_sql_querry(querry_string))
-		return base_db.do_external_sql_querry(querry_string)
+		#return base_db.do_external_sql_querry(querry_string)
 		# return 'Some data and Some success code' # Next round for
 		#
 		querry_string = 'delete from history'
 		
 		#print (base_db.print()) this is bad cause yet not implemented print()
 		base_db.do_external_sql_querry(querry_string)
-		print(base_db.do_external_sql_querry(querry_string))
+		#print(base_db.do_external_sql_querry(querry_string))
 		#print (base_db.do_external_sql_querry(querry_string))
-		return base_db.do_external_sql_querry(querry_string)
+		#return base_db.do_external_sql_querry(querry_string)
 		# return 'Some data and Some success code' # Next round for
 		#
 		querry_string = 'update sqlite_sequence set seq=0 where name="history"'
 		
 		#print (base_db.print()) this is bad cause yet not implemented print()
-		base_db.do_external_sql_querry(querry_string)
-		print(base_db.do_external_sql_querry(querry_string))
+		#base_db.do_external_sql_querry(querry_string)
+		#print(base_db.do_external_sql_querry(querry_string))
 		#print (base_db.do_external_sql_querry(querry_string))
 		return base_db.do_external_sql_querry(querry_string)
 		# return 'Some data and Some success code' # Next round for			
