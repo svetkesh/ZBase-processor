@@ -114,6 +114,15 @@ from test_command_checker02 import *
 # testing 02-2 end
 #
 
+#
+# starting 03
+#
+
+
+
+#
+# end of 03 testing
+#
 
 
 

@@ -68,6 +68,6 @@ def clear_all_passwords(base_db_name):
 
 
 # local test run 
-#get_license_ID_from_db_021('base.dat') # good
+#clear_all_passwords('base.dat') # good
 	
 

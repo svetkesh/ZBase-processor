@@ -102,31 +102,32 @@ print ('running ',sys.argv)
 
 from test_db_object_021 import *
 
-def repair_db(base_db_name, client_name,client_ip):
-	print ('add_client_021 runing with arg=',base_db_name, ' client_name' , client_name, 'client_ip', client_ip)
-	
-	# try to create db connection
-	try:
-		#pass
-		print ('try to create db connection base_db = zab_base_dat(zab_base_dat)')
-		base_db = zab_base_dat(base_db_name)
-		#print ('----')
-		#print ('base_db', base_db , '\n','type(base_db)' , type(base_db))
-		#print ('----')
-		
-		# no more ugly typing :)
-		# from table computerToGroupLink delete problematic Clients IDs
-		querry_string = "delete from computerToGroupLink where computer_id IN ( select y.id from computer y  where  y.deleted != 0  or y.app_version=NULL  or y.app_version=''  or y.base_version=NULL  or y.product_type=0 )"
-		#
-		#print (base_db.print())                                                  # this is bad cause yet not implemented print() 
-		#base_db.do_external_sql_querry(querry_string)                            #  each could lead to run query
-		#print(base_db.do_external_sql_querry(querry_string))                     #  so debug it with caution
-		#print (base_db.do_external_sql_querry(querry_string))                    #  if you dont want to get
-		#                                                                         #  dublicated or even triple :0
+def repair_db(base_db_name):
+    print ('repair_db runing with arg=',base_db_name)
+    
+    # try to create db connection
+    try:
+        #pass
+        print ('try to create db connection base_db = zab_base_dat(zab_base_dat)')
+        base_db = zab_base_dat(base_db_name)
+        #print ('----')
+        #print ('base_db', base_db , '\n','type(base_db)' , type(base_db))
+        #print ('----')
+        
+        # no more ugly typing :)
+        # from table computerToGroupLink delete problematic Clients IDs
+        querry_string = "delete from computerToGroupLink where computer_id IN ( select y.id from computer y  where  y.deleted != 0  or y.app_version=NULL  or y.app_version=''  or y.base_version=NULL  or y.product_type=0 )"
+        #
+        #print (base_db.print())                                                  # this is bad cause yet not implemented print() 
+        #base_db.do_external_sql_querry(querry_string)                            #  each could lead to run query
+        #print(base_db.do_external_sql_querry(querry_string))                     #  so debug it with caution
+        #print (base_db.do_external_sql_querry(querry_string))                    #  if you dont want to get
+        #                                                                         #  dublicated or even triple :0
         #                                                                         #  results ... like delete
         # from table computer_license delete problematic Clients IDs
+        querry_string = ""
         querry_string = "DELETE from computer_license where id IN ( select y.id from computer y where y.deleted != 0  or y.app_version=NULL  or y.app_version='' or y.base_version=NULL or y.product_type=0)"
-		#
+        #
         #
         base_db.do_external_sql_querry(querry_string)
         
@@ -145,18 +146,18 @@ def repair_db(base_db_name, client_name,client_ip):
         base_db.do_external_sql_querry(querry_string)
         # updating sequences - history
         querry_string = 'update sqlite_sequence set seq = ( select count (*) from history ) where name = "history"'
-		return base_db.do_external_sql_querry(querry_string)                      
-		# return 'Some data and Some success code' # Next round for
-		
-		##                                                               # here should be placed stat_refresh > refresh made here with updating
-		
-	except:
-		print ('connection to db was not successfull or not all proc works as exprcted')
-		# return 'Some error code' # Next round for
-		return False
-	
-	#base_db.do_external_sql_querry('some OTHER text as fake querry') # unmask error
-	#base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1') # unmask error
+        return base_db.do_external_sql_querry(querry_string)                      
+        # return 'Some data and Some success code' # Next round for
+        
+        ##                                                               # here should be placed stat_refresh > refresh made here with updating
+        
+    except:
+        print ('connection to db was not successfull or not all proc works as exprcted')
+        # return 'Some error code' # Next round for
+        return False
+    
+    #base_db.do_external_sql_querry('some OTHER text as fake querry') # unmask error
+    #base_db.do_external_sql_querry('SELECT value FROM settings WHERE id = 1') # unmask error
 
 
 # local test run 

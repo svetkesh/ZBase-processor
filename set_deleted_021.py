@@ -4,7 +4,7 @@
 #  stage 0.2-1
 #  
 #  Copyright 2016 kesha <kesha@c2037>
-# test_ext_procedure_for_db_021
+# template_ext_procedure_for_db_021
 
 # it's template for procedures
 #
@@ -24,7 +24,11 @@ then perform sql querry analisys and may be parse
 then returns result # and success code <-- later
                     # next step
                     # and error code
-or False if error raised.'''
+or False if error raised.
+Set computer with given computer_id "deleted".
+Marks computer with ID "computer_id" as deleted from serv list.
+Actualy do 
+--update computer set deleted =1 where id=computer_id'''
 
 import sys
 #import time
@@ -33,11 +37,14 @@ print ('running ',sys.argv)
 
 from test_db_object_021 import *
 
-def clear_all_passwords(base_db_name):
+def set_deleted(base_db_name, computer_id):
 	print ('clear_all_passwords_021 runing with arg=',base_db_name)
 	
 	# try to create db connection
 	try:
+		#print ('computer_id' , computer_id)
+		#print ('type of computer_id' , type(computer_id))
+		
 		#pass
 		print ('try to create db connection base_db = zab_base_dat(zab_base_dat)')
 		base_db = zab_base_dat(base_db_name)
@@ -46,7 +53,7 @@ def clear_all_passwords(base_db_name):
 		#print ('----')
 		
 		# no more ugly typing :)
-		querry_string = 'update settings set value =NULL where id=2 or id=3 or id =4 or id=5 or id=6 or id=7'
+		querry_string = 'update computer set deleted =1 where id='+str(computer_id)
 		
 		#print (base_db.print()) this is bad cause yet not implemented print()
 		base_db.do_external_sql_querry(querry_string)
@@ -64,4 +71,9 @@ def clear_all_passwords(base_db_name):
 
 
 # local test run 
-#get_license_ID_from_db_021('base.dat') # good
+#set_deleted('base.dat',132) # 
+#try :
+	#set_deleted('base.dat',1) # 
+#except :
+	#print ('some erroe w proc call')
+

@@ -16,7 +16,7 @@ class zab_base_dat :
 	#~ pass
 	def __init__(self,file_name):
 		self.file_name = file_name
-		self.is_zab_db = self.check_basic_open_db_file()
+		#self.is_zab_db = self.check_basic_open_db_file()  # test for second reply in test_file_select.py
 		#is_zab_db = check_basic_open_db_file(self)
 			
 			#try :
